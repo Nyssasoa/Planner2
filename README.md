@@ -41,24 +41,9 @@ Le planner embarque le moteur d'échecs libre **Stockfish.js (GPLv3)** : en publ
 
 ## Nouveautés de cette version
 
-- **Écran d'accueil / profil** au premier lancement (prénom, nom, anniversaire, sexe, e-mail). Modifiable ensuite : ⚙ Réglages › « Mon profil et sauvegarde e-mail ».
+- **Écran d'accueil / profil** au premier lancement (prénom, nom, anniversaire, sexe, e-mail). Modifiable ensuite : ⚙ Réglages › « Mon profil ».
 - **Barre de navigation fixe en bas** : Agenda, À faire, Suivis, Energy, Focus, Projets, Habit.
+- **Menu déroulant (☰)** : Planning, Réglages et « M’offrir un café ». Les 7 espaces sont déjà dans la barre du bas, ils ne sont plus répétés dans ce menu.
 - **Verrou de concentration supprimé.**
-- **Sauvegarde par e-mail** (EmailJS), automatique (chaque jour / 3 jours / semaine) et/ou à la fermeture.
-- **Restauration** : bouton « Vérifier et restaurer mes données » (retrouve la sauvegarde gardée sur ce téléphone pour cet e-mail), ou glisser-déposer / importer le fichier `.json` reçu par e-mail sur un nouveau téléphone.
+- **Restauration** : bouton « Vérifier et restaurer mes données » (retrouve la sauvegarde gardée sur ce téléphone pour cet e-mail), ou glisser-déposer / importer un fichier `.json` de sauvegarde.
 - **manifest.json** ajouté (pour PWABuilder).
-
-## Configurer EmailJS (gratuit, 5 minutes)
-
-1. Crée un compte sur https://www.emailjs.com
-2. **Email Services › Add New Service** › Gmail (ou autre) › connecte ta boîte › note le **Service ID**.
-3. **Email Templates › Create New Template** :
-   - *To Email* : `{{to_email}}`
-   - *Subject* : `Sauvegarde de mon planner – {{date}}`
-   - *Content* : `Bonjour {{to_name}}, voici ta sauvegarde. Garde la pièce jointe pour restaurer ton planner.`
-   - Onglet **Attachments › Add Attachment › Variable Attachment** : *Parameter name* `backup_file`, *Filename* `planner-sauvegarde.json`, *Content type* `application/json` (ou « Base64 »).
-   - Enregistre et note le **Template ID**.
-4. **Account › General** : copie la **Public Key**.
-5. Dans le planner : ⚙ › Mon profil et sauvegarde e-mail › colle les 3 clés › **Enregistrer les clés** › **Envoyer ma sauvegarde par e-mail**.
-
-Limite : l'offre gratuite d'EmailJS limite la taille des envois (environ 50 Ko). Si ton planner devient très gros, utilise « Télécharger le fichier de sauvegarde ».
