@@ -43,7 +43,7 @@ Le planner embarque le moteur d'échecs libre **Stockfish.js (GPLv3)** : en publ
 
 - **Écran d'accueil / profil** au premier lancement (prénom, nom, anniversaire, sexe, e-mail). Modifiable ensuite : ⚙ Réglages › « Mon profil ».
 - **Barre de navigation fixe en bas** : Agenda, À faire, Suivis, Energy, Focus, Projets, Habit.
-- **Menu déroulant (☰)** : Planning, Réglages et « M’offrir un café ». Les 7 espaces sont déjà dans la barre du bas, ils ne sont plus répétés dans ce menu.
+- **Menu déroulant (☰)** : Planning, Réglages, « Noter l’application », « Parler de l’application à un ami », « Nous contacter », « Politique de confidentialité » et « M’offrir un café ». Les 7 espaces sont déjà dans la barre du bas, ils ne sont plus répétés dans ce menu, et ces 4 actions ne sont plus dans les Réglages.
 - **Verrou de concentration supprimé.**
 - **Restauration** : bouton « Vérifier et restaurer mes données » (retrouve la sauvegarde gardée sur ce téléphone pour cet e-mail), ou glisser-déposer / importer un fichier `.json` de sauvegarde.
 - **manifest.json** ajouté (pour PWABuilder).

@@ -1,5 +1,5 @@
-/* Service worker : fonctionnement hors ligne. Version a2b3c4d5e6 */
-const CACHE='planner-a2b3c4d5e6';
+/* Service worker : fonctionnement hors ligne. Version c8d9e0f1a2 */
+const CACHE='planner-c8d9e0f1a2';
 const FILES=['./','./index.html','./manifest.webmanifest','./manifest.json','./icons/icon-192.png','./icons/icon-512.png','./icons/icon-512-maskable.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE&&k.indexOf('planner-')===0).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
