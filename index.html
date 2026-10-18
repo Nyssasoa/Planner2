@@ -517,6 +517,10 @@ function renderNav(){
   const wk=weekKeyFor(),h1d=!!(S.weekly[wk]&&S.weekly[wk].done);
   $('#drawer').innerHTML=`<button class="dr" role="menuitem" data-a="h1open">${ICON.h1}<span>Planning<small>${h1d?'Fait · semaine du '+fmtShort(wk):'Planifier ta semaine (60 min)'}</small></span></button>`
   +`<button class="dr" role="menuitem" data-a="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg><span>Réglages</span></button>`
+  +`<div class="dr-sep"></div><button class="dr" role="menuitem" data-a="rate">⭐<span>Noter l’application</span></button>`
+  +`<button class="dr" role="menuitem" data-a="share">📣<span>Parler de l’application à un ami</span></button>`
+  +`<button class="dr" role="menuitem" data-a="contact">✉️<span>Nous contacter</span></button>`
+  +`<button class="dr" role="menuitem" data-a="privacy">🔒<span>Politique de confidentialité</span></button>`
   +`<div class="dr-sep"></div><a class="dr kofi" href="https://ko-fi.com/anyssasoadirdine" target="_blank" rel="noopener noreferrer" role="menuitem" data-a="menu-close">M’offrir un café ☕</a>`;
   $('#fab').style.display='grid';if(window.renderBNav)renderBNav();
 }
@@ -1318,6 +1322,10 @@ document.addEventListener('click',e=>{
   if(a==='gotoday'){ui.date=TODAY();render();return}
   if(a==='pick'){ui.date=v;render();return}
   if(a==='settings'){openSettings();return}
+  if(a==='rate'){window.__ax.openRate();return}
+  if(a==='share'){window.__ax.openShare();return}
+  if(a==='contact'){window.__ax.openContact();return}
+  if(a==='privacy'){window.__ax.openPrivacy();return}
   if(a==='sheetclose'){closeSheet();return}
   if(a==='fabmenu'){
     openSheet(`<h2>Ajouter</h2><div class="fabgrid"><button class="btn alt" data-a="fab" data-v="task">Nouvelle tâche</button><button class="btn alt" data-a="fab" data-v="project">Nouveau projet</button><button class="btn alt" data-a="fab" data-v="unex">Nouvel imprévu</button><button class="btn alt" data-a="fab" data-v="idea">Nouvelle idée</button><button class="btn alt" data-a="fab" data-v="book">Nouveau livre à lire</button></div><div class="row" style="margin-top:16px"><button class="btn alt" data-a="sheetclose">Fermer</button></div>`);return}
@@ -3177,7 +3185,7 @@ window.extHabLang=function(){return langView()};
    ===================================================================== */
 const PALS=[['indigo','Indigo','#3b4cca'],['emerald','Émeraude','#0f8a6b'],['rose','Rose','#c2255c'],['amber','Ambre','#b86e00'],['ocean','Océan','#0a7ea4'],['slate','Ardoise','#475569']];
 const T_=s=>(S.settings.lang==='en'&&window.__i18n)?window.__i18n.tr(s):s;
-const APP={kofi:'https://ko-fi.com/anyssasoadirdine',contactEmail:''};
+const APP={kofi:'https://ko-fi.com/anyssasoadirdine',contactEmail:'pro.soadirdineanyssa@gmail.com'};
 window.appxSettingsHtml=()=>{
   const st=S.settings,th=st.theme||{mode:'auto',palette:'indigo'},lg=st.lang==='en'?'en':'fr';
   const bt=(x,l)=>`<button class="btn alt wide" style="margin-top:10px" data-x="${x}">${l}</button>`;
@@ -3538,7 +3546,7 @@ document.addEventListener('submit',async e=>{
 /* =====================================================================
    11) DÉMARRAGE
    ===================================================================== */
-window.__ax={langView,sendOut,openPrivacy,APP,addRead,act:{min:actMin,auto:autoRoutine},local:{load:localLoad,fetch:localFetch,parse:parseJsonLoose,state:()=>loc},amb:{start:ambStart,stop:ambStop,toggle:ambToggle,state:()=>({on:Object.keys(amb.on),timers:Object.keys(amb.h).reduce((a,k)=>a+amb.h[k].timers.length,0),master:!!amb.master,vol:amb.vol}),crack:()=>{const c=actx();if(c&&amb.master)crack(c,amb.master)},rumble:()=>{const c=actx();if(c&&amb.master)rumble(c,amb.master,0)}},breath:{state:()=>!!bs,sound:breathSound,stop:breathStop},sf:()=>sf,sfLoad,toFEN,ygPhases,ygTotal,engineMove,checkReminders,notify,cloud:()=>({col,cready,cstat}),pin:()=>pin,gateScreen,showPin,focusNow,resume,beat,hb:()=>hb,state:()=>({ch,cgame,fgame,lp,wl,gateUp,pinUp}),startChallenge,completeChallenge,pushLive,cloudStart,autoSnapshot,snapAll,getBlob,getIndex,hashPin,lsGet};
+window.__ax={langView,sendOut,openPrivacy,openRate,openShare,openContact,APP,addRead,act:{min:actMin,auto:autoRoutine},local:{load:localLoad,fetch:localFetch,parse:parseJsonLoose,state:()=>loc},amb:{start:ambStart,stop:ambStop,toggle:ambToggle,state:()=>({on:Object.keys(amb.on),timers:Object.keys(amb.h).reduce((a,k)=>a+amb.h[k].timers.length,0),master:!!amb.master,vol:amb.vol}),crack:()=>{const c=actx();if(c&&amb.master)crack(c,amb.master)},rumble:()=>{const c=actx();if(c&&amb.master)rumble(c,amb.master,0)}},breath:{state:()=>!!bs,sound:breathSound,stop:breathStop},sf:()=>sf,sfLoad,toFEN,ygPhases,ygTotal,engineMove,checkReminders,notify,cloud:()=>({col,cready,cstat}),pin:()=>pin,gateScreen,showPin,focusNow,resume,beat,hb:()=>hb,state:()=>({ch,cgame,fgame,lp,wl,gateUp,pinUp}),startChallenge,completeChallenge,pushLive,cloudStart,autoSnapshot,snapAll,getBlob,getIndex,hashPin,lsGet};
 if(pin.on)showPin();
 const pendingGate=lsGet('ax-gate-pending',null);
 if(pendingGate&&Date.now()-pendingGate.ts<6*3600*1000&&gateCfg().on&&focusNow())gateScreen(pendingGate.label,0);
